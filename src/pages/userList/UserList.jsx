@@ -6,20 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useEffect } from "react";
 import { deleteUser, getUsers } from "../../redux/apiCalls";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function UserList() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.users);
   useEffect(() => {
     getUsers(dispatch);
   }, [dispatch]);
-
+  const notify = () => toast("Xóa user thành công!");
   const handleDelete = (id) => {
     const result = window.confirm("Are you sure you want to delete this user?");
     if (result) {
       deleteUser(id, dispatch);
       // window.location.reload("/users");
-      window.location.reload();
+      window.location.replace("/users");
+
+      // window.location.reload();
+      notify();
     } else {
       return;
     }
@@ -63,6 +67,18 @@ export default function UserList() {
             <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row._id)}
+            />
+            <ToastContainer
+              position="top-right"
+              autoClose={800}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
             />
           </>
         );
