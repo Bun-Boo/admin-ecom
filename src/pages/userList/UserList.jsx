@@ -18,7 +18,8 @@ export default function UserList() {
     const result = window.confirm("Are you sure you want to delete this user?");
     if (result) {
       deleteUser(id, dispatch);
-      window.location.reload("/users");
+      // window.location.reload("/users");
+      location.reload();
     } else {
       return;
     }
