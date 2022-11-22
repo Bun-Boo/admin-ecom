@@ -20,7 +20,7 @@ export default function UserList() {
     if (result) {
       deleteUser(id, dispatch);
       // window.location.reload("/users");
-      window.location.replace("/users");
+      // window.location.replace("/users");
 
       // window.location.reload();
       notify();

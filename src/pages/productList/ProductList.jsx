@@ -20,7 +20,7 @@ export default function ProductList() {
     if (result) {
       deleteProduct(id, dispatch);
       notify();
-      window.location.replace("/products");
+      // window.location.replace("/products");
     } else {
       return;
     }
